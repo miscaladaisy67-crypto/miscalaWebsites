@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 2 | Computing & Other Sciences</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #E6D5F5 0%, #D8BFD8 100%);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #9370DB 0%, #8B5DC8 100%);
+            box-shadow: 0 4px 20px rgba(147, 112, 219, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a.active {
+            background: rgba(255, 255, 255, 0.3);
+            font-weight: bold;
+        }
+
+        .content-page {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 2rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            text-decoration: none;
+            color: #6B46C1;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateX(-5px);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #6B46C1;
+            margin-bottom: 2rem;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .lesson-detail-box {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(107, 70, 193, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .lesson-detail-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(107, 70, 193, 0.3);
+        }
+
+        .box-header {
+            background: linear-gradient(135deg, #9370DB 0%, #BA55D3 100%);
+            color: white;
+            padding: 1.2rem 1.5rem;
+            font-size: 1.4rem;
+            font-weight: bold;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+
+        .box-content {
+            padding: 1.5rem;
+        }
+
+        .box-content p {
+            margin-bottom: 1rem;
+            color: #333;
+            font-size: 1.05rem;
+        }
+
+        .box-content ul {
+            margin-left: 1.5rem;
+            color: #444;
+        }
+
+        .box-content li {
+            margin-bottom: 0.8rem;
+            line-height: 1.7;
+        }
+
+        .box-content strong {
+            color: #6B46C1;
+            font-weight: 600;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #9370DB 0%, #8B5DC8 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            box-shadow: 0 -4px 20px rgba(147, 112, 219, 0.3);
+        }
+
+        .references {
+            font-size: 0.9rem;
+            color: #6B46C1;
+            margin-top: 2rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.7);
+            border-left: 4px solid #9370DB;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .content-page {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Portfolio</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="lessons.html" class="active">Lessons</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="content-page">
+        <a href="lessons.html" class="back-link">
+            <i class="fa-solid fa-arrow-left"></i> Back to Lessons
+        </a>
+
+        <h2 class="section-title">Lesson 2: Computing and Other Sciences</h2>
+
+        <div class="lesson-detail-box">
+            <div class="box-header">1. Integration</div>
+            <div class="box-content">
+                <p>This section explains the synergy between technology and science.</p>
+                <ul>
+                    <li><strong>Computing:</strong> Defined as using technology to process input and produce desired output applicable to any industry.</li>
+                    <li><strong>Science:</strong> A system of knowledge concerned with the physical world through unbiased observations and systematic experimentation.</li>
+                    <li><strong>The Synergy:</strong> When combined, they create powerful applications across various research fields and industries, enhancing data collection and problem-solving.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="lesson-detail-box">
+            <div class="box-header">2. Formality</div>
+            <div class="box-content">
+                <p>Computing is classified as a <strong>formal science</strong>, an area that uses mathematically definable logic systems to generate results.</p>
+                <ul>
+                    <li><strong>Examples:</strong> Mathematics, logic, computer science, statistics, cryptography, information technology, and robotics.</li>
+                    <li><strong>Technological Benefits:</strong> Calculators for complex math, spreadsheet software (Excel) for formulas, and AI that combines math with logic.</li>
+                    <li><strong>Virtual Testing:</strong> Used for testing mathematical and logical implementations in a digital environment.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="lesson-detail-box">
+            <div class="box-header">3. Nature</div>
+            <div class="box-content">
+                <p>Focuses on how computing serves <strong>natural science</strong>, which predicts natural phenomena through observation.</p>
+                <ul>
+                    <li><strong>Examples:</strong> Biology, chemistry, physics, astronomy, oceanography, and environmental science.</li>
+                    <li><strong>Digital Applications:</strong> Electron microscopes for examining viral loads, CT scans for medical imaging, and Gamma ray telescopes for space observation.</li>
+                    <li><strong>Real-time Monitoring:</strong> Digital sensors deployed for monitoring oceanic and environmental changes.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="lesson-detail-box">
+            <div class="box-header">4. Society</div>
+            <div class="box-content">
+                <p>This covers the role of computing in <strong>social science</strong>, the study of society and human relationships.</p>
+                <ul>
+                    <li><strong>Examples:</strong> Anthropology, archaeology, education, geography, psychology, and sociology.</li>
+                    <li><strong>Data Gathering:</strong> Online polls and digital census forms for population studies.</li>
+                    <li><strong>Observation & Instruction:</strong> Social networks for analyzing societal trends, and modern tools like laptops and projectors for learning.</li>
+                </ul>
+            </div>
+        </div>
+
+        <p class="references">
+            <em>References: COMP001 Module 02: Computing and Other Sciences; Formal, Natural, and Social Science Research Applications.</em>
+        </p>
+    </main>
+
+    <footer>
+        <p>@ Daisy S. Miscala Portfolio</p>
+    </footer>
+</body>
+</html>

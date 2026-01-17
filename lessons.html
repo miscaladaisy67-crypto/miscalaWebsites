@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson Gallery | My Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f0ff 0%, #e8d8ff 50%, #dcc8ff 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #b39ddb 0%, #9575cd 100%);
+            padding: 1.2rem 0;
+            box-shadow: 0 4px 20px rgba(149, 117, 205, 0.4);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #fff;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            border: 2px solid transparent;
+            font-size: 1.05rem;
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(255,255,255,0.25);
+            transform: translateY(-3px);
+            border-color: rgba(255,255,255,0.5);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Main Content */
+        main {
+            flex: 1;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            width: 100%;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            color: #6a1b9a;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 8px rgba(106, 27, 154, 0.3);
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        main > p {
+            color: #7b1fa2;
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        /* Lesson Grid */
+        .lesson-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        .lesson-card {
+            background: linear-gradient(135deg, #ffffff 0%, #faf8ff 100%);
+            border: 3px solid #ce93d8;
+            border-radius: 20px;
+            padding: 0;
+            text-decoration: none;
+            color: #7b1fa2;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 6px 20px rgba(206, 147, 216, 0.35);
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lesson-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(179, 157, 219, 0.15) 0%, transparent 70%);
+            transition: all 0.6s ease;
+            opacity: 0;
+            z-index: 1;
+        }
+
+        .lesson-card:hover::before {
+            opacity: 1;
+            transform: scale(1.5);
+        }
+
+        .lesson-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 12px 35px rgba(149, 117, 205, 0.5);
+            border-color: #9575cd;
+        }
+
+        /* Image Section */
+        .lesson-image {
+            width: 100%;
+            height: 200px;
+            border-radius: 17px 17px 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .lesson-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.6s ease;
+            z-index: 2;
+        }
+
+        .lesson-card:hover .lesson-image::before {
+            left: 100%;
+        }
+
+        .lesson-image::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.25);
+            transform: translate(-50%, -50%);
+            transition: width 0.5s ease, height 0.5s ease;
+            z-index: 1;
+        }
+
+        .lesson-card:hover .lesson-image::after {
+            width: 250px;
+            height: 250px;
+        }
+
+        .lesson-card:hover .lesson-image {
+            transform: scale(1.05);
+        }
+
+        .lesson-image i {
+            font-size: 4.5rem;
+            color: rgba(255, 255, 255, 0.95);
+            transition: all 0.5s ease;
+            position: relative;
+            z-index: 3;
+            text-shadow: 0 6px 12px rgba(0,0,0,0.4);
+        }
+
+        .lesson-card:hover .lesson-image i {
+            transform: scale(1.3) rotate(12deg);
+            color: #fff;
+            filter: drop-shadow(0 0 20px rgba(255,255,255,0.6));
+        }
+
+        .lesson-emoji {
+            font-size: 5rem;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 4;
+            transition: all 0.5s ease;
+            filter: drop-shadow(0 8px 16px rgba(0,0,0,0.3));
+        }
+
+        .lesson-card:hover .lesson-emoji {
+            transform: translate(-50%, -50%) scale(1.4) rotate(15deg);
+            filter: drop-shadow(0 12px 24px rgba(0,0,0,0.4));
+        }
+
+        /* Individual topic colors */
+        .topic-1 { 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .topic-2 { 
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        .topic-3 { 
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        .topic-4 { 
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+        .topic-5 { 
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+        .topic-6 { 
+            background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+        }
+        .topic-7 { 
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+        .topic-8 { 
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+        }
+
+        /* Title Section */
+        .lesson-title {
+            padding: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .lesson-card h3 {
+            font-size: 1.3rem;
+            text-align: center;
+            color: #6a1b9a;
+            font-weight: 700;
+            margin: 0;
+            line-height: 1.5;
+            letter-spacing: 0.5px;
+        }
+
+        .lesson-card:hover h3 {
+            color: #4a148c;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #b39ddb 0%, #9575cd 100%);
+            color: #fff;
+            text-align: center;
+            padding: 2rem;
+            margin-top: auto;
+            box-shadow: 0 -4px 20px rgba(149, 117, 205, 0.4);
+        }
+
+        footer p {
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-weight: 600;
+            font-size: 1.05rem;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .lesson-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .lesson-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .logo {
+                font-size: 1.6rem;
+            }
+
+            main {
+                padding: 3rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .lesson-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .lesson-card h3 {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">📚 Portfolio</div>
+            <ul class="nav-links">
+                <li><a href="index.html"> Home</a></li>
+                <li><a href="skills.html"> Skills</a></li>
+                <li><a href="lessons.html"> Lesson Gallery</a></li>
+                <li><a href="contact.html"> Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main class="content-page">
+        <h2 class="section-title">✨ Lesson Gallery ✨</h2>
+        <p>Select the topic below to see full details 👇</p>
+        
+        <div class="lesson-grid">
+            <a href="lesson1.html" class="lesson-card">
+                <div class="lesson-image topic-1">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <div class="lesson-emoji">🏢</div>
+                </div>
+                <div class="lesson-title">
+                    <h3>Computing Industry</h3>
+                </div>
+            </a>
+            
+            <a href="lesson2.html" class="lesson-card">
+                <div class="lesson-image topic-2">
+                    <i class="fa-solid fa-flask"></i>
+                    <div class="lesson-emoji">🔬</div>
+                </div>
+                <div class="lesson-title">
+                    <h3>Computing & Sciences</h3>
+                </div>
+            </a>
+            
+            <a href="lesson3.html" class="lesson-card">
+                <div class="lesson-image topic-3">
+                    <i class="fa-solid fa-desktop"></i>
+                    <div class="lesson-emoji">💻</div>
+                </div>
+                <div class="lesson-title">
+                    <h3>The Computing System</h3>
+                </div>
+            </a>
+            
+            <a href="lesson4.html" class="lesson-card">
+                <div class="lesson-image topic-4">
+                    <i class="fa-solid fa-calculator"></i>
+                    <div class="lesson-emoji">🔢</div>
+                </div>
+                <div class="lesson-title">
+                    <h3>Binary Arithmetic</h3>
+                </div>
+            </a>
+            
+            <a href="lesson5.html" class="lesson-card">
+                <div class="lesson-image topic-5">
+                    <i class="fa-solid fa-microchip"></i>
+                    <div class="lesson-emoji">⚡</div>
+                </div>
+                <div class="lesson-title">
+                    <h3>Digital Logic System</h3>
+                </div>
+            </a>
+            
+            <a href="lesson6.html" class="lesson-card">
+                <div class="lesson-image topic-6">
+                    <i class="fa-solid fa-radio"></i>
+                    <div class="lesson-emoji">📻</div>
+                </div>
+                <div class="lesson-title">
+                    <h3>Electronic Media</h3>
+                </div>
+            </a>
+            
+            <a href="lesson7.html" class="lesson-card">
+                <div class="lesson-image topic-7">
+                    <i class="fa-solid fa-globe"></i>
+                    <div class="lesson-emoji">🌐</div>
+                </div>
+                <div class="lesson-title">
+                    <h3>The Internet</h3>
+                </div>
+            </a>
+            
+            <a href="lesson8.html" class="lesson-card">
+                <div class="lesson-image topic-8">
+                    <i class="fa-solid fa-scale-balanced"></i>
+                    <div class="lesson-emoji">⚖️</div>
+                </div>
+                <div class="lesson-title">
+                    <h3>Ethics in Computing</h3>
+                </div>
+            </a>
+        </div>
+    </main>
+    
+    <footer>
+        <p> @ Daisy S. Miscala Portfolio</p>
+    </footer>
+</body>
+</html>
